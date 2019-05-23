@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>React-Example</title>
+    <script src="https://unpkg.com/react@16.7.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.7.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+//React component
+//this component is a function that returns some basic UI
+//recieved an error when using lowercase tag for component
+//**********************************************************
+//**********************************************************
+
+/*
+    const Hello = () => {
+        return (
+            <div className="heading">
+                <h1> Welcome to React</h1>
+            </div>
+    )
+};
+*/
+
+
+//Props
+//properties about the component
+//**********************************************************
+//**********************************************************
+/*
+const Hello = ({library, message}) => {
+    //console.log(props)
+        return (
+            <div className="heading">
+                <h1> Welcome to {library}</h1>
+                <p>{message}</p>
+            </div>
+    )
+};
+
+<Hello library="React" message="Enjoy!"/>,
+*/
+
+
+//Classes, States and Events, Oh my!
+//**********************************************************
+//**********************************************************
+
+const Lake = ({name}) => <h1>{name}</h1>;
+
+//Class component
+class App extends React.Component{
+    //state
+    state = {
+        //key
+        loggedIn: false
+    }
+    logIn = () => this.setState({loggedIn: true})
+    logOut = () => this.setState({loggedIn:false})
+    render(){
+        return (
+            <div>
+                <button onClick={this.logIn}> Log In</button>
+                <button onClick={this.logOut}> Log Out</button>
+
+                <div> 
+                    The user is {
+                    //JSX expression
+                    this.state.loggedIn
+                    ? "logged in"
+                    : "not logged in"}.
+                </div>
+                <Lake name="Lake 2" />
+                <Lake name="Lake 3" />
+                <Lake name="Lake 4" />
+            </div>
+        )
+    }
+}
+
+        //Render out the scripts onscreen
+        
+        ReactDOM.render(
+            <App/>,
+            document.getElementById("root"));
+    </script>
+</body>
+
+</html>
